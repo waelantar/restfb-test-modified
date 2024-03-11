@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Facebook Feed</title>
+    <style>
+        /* CSS styles for layout */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .post {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        .post img {
+            max-width: 100%;
+        }
+        .post .content {
+            margin-left: 10px;
+        }
+        .post .content h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+<h1>My Facebook Feed</h1>
+<div th:each="post : ${posts}" class="post">
+    <!-- Display post picture if available -->
+    <img  th:src="${post.fullPicture}" alt="Post Image"/>
+    <img  th:src="${post.picture}" alt="Post Image"/>
+    <img  th:src="${post.icon}" alt="Post Image"/>
+
+
+    <div class="content">
+        <!-- Display post name -->
+        <h3 th:text="${post.from}"></h3>
+        <!-- Display post description -->
+        <p th:text="${post.message}"></p>
+        <!-- Optionally, display post created time -->
+        <p>Posted on <span th:text="${#dates.format(post.createdTime, 'dd/MM/yyyy HH:mm')}"></span></p>
+    </div>
+</div>
+</body>
+</html>

@@ -27,10 +27,11 @@ import static java.lang.System.out;
 public class RestfbTestApplication {
 
     public static void main(String[] args) {
+        SpringApplication.run(RestfbTestApplication.class,args);
         int counter = 0;
-        String MY_ACCESS_TOKEN = "EAAEyMERHZBOgBO2ZCDiA28ZBu6BBBERp5d7ZB2qGZAivTZAubsAfXtZBYeI8D47b4vt6jy5w8ghp2Flus4y8BkCZC2qDWokhZBeD3BRlUhVNzPGetVwrEwa9sPFk1XWtgmiVFStTS3uaYUN4Fr4bjZAO4zeLm1MX7i8uqezJNBbFXwcZCGZAImDZBrWfpzHZCVFzGgWAkZD";
-        FacebookClient facebookClient = new DefaultFacebookClient(MY_ACCESS_TOKEN, Version.VERSION_9_0);
-        Connection<Post> myfeed = facebookClient.fetchConnection("me/feed", Post.class);
+//        String MY_ACCESS_TOKEN = "EAAEyMERHZBOgBO6T8uApnpRzIgtJILyqpsSIrB0lZBCaepjju2kt6afvTfpndbIKrIwLWsqlfquNbAevjcpeRNAnW8PqtEZBOVfTVZBp3PTYd2kVAhZA4g3dwWDRiZBR4SwJZB0ZA9mDGS2p81UIvbSoqZC1YOKkH58lJEZCXHWsETa2DkJx1JMoKxZA0B2r94C4ZBrXNzaAYlMsMtrLIAZAchZBQ5XXAZD";
+//        FacebookClient facebookClient = new DefaultFacebookClient(MY_ACCESS_TOKEN, Version.VERSION_9_0);
+//        Connection<Post> myfeed = facebookClient.fetchConnection("me/feed", Post.class);
 //        for(List<Post> myFeedPage :myfeed)
 //        {
 //            for(Post post : myFeedPage)
@@ -38,12 +39,12 @@ public class RestfbTestApplication {
 //                String message=post.getMessage();
 //                Date date=post.getCreatedTime();
 //                if(post.getMessage()!=null) {
-//                    System.out.println(post.getId()+"this content"+post.getMessage());
+//                    System.out.println(post.getApplication());
 //                }
 //            }
-//        }}
+//        }
 //        Connection<Insight> insightsConnection =
-//                facebookClient.fetchConnection("worldoucar/insights",
+//                facebookClient.fetchConnection("136720779840416/insights",
 //                        Insight.class, // the insight type
 //                        Parameter.with("metric", "page_fan_adds_unique,page_fan_adds"));
 //
@@ -74,39 +75,36 @@ public class RestfbTestApplication {
 //                out.println(comment.getMessage());
 //            }
 //        }
-//        facebookClient.publish("worldoucar/feed", FacebookType.class, Parameter.with("message", Integer.toString(counter) + ": Hello, facebook World!"));
+//        facebookClient.publish("136720779840416/feed", FacebookType.class, Parameter.with("message", Integer.toString(counter) + ": Hello, facebook World!"));
 //        counter++;
 
-//        InputStream imageStream = RestfbTestApplication.class.getClassLoader().getResourceAsStream("/home/wael/Downloads/fb integration second try/restfb test/src/main/resources/Assets/website.jpg");        FacebookType photo = facebookClient.publish( "worldoucar/photos" , FacebookType.class,
+//        InputStream imageStream = RestfbTestApplication.class.getClassLoader().getResourceAsStream("/home/wael/Downloads/fb integration second try/restfb test/src/main/resources/Assets/website.jpg");        FacebookType photo = facebookClient.publish( "136720779840416/photos" , FacebookType.class,
 //                BinaryAttachment.with("photoName", imageStream));
 //        Link photoLink = facebookClient.fetchObject(photo.getId(), Link.class);
-//        FacebookType post =  facebookClient.publish("worldoucar/feed", FacebookType.class,
+//        FacebookType post =  facebookClient.publish("136720779840416/feed", FacebookType.class,
 //                Parameter.with("message", "your message"),Parameter.with("type", "photo"),
 //                Parameter.with("link", photoLink.getLink()));
 //        SpringApplication.run(RestfbTestApplication.class, args);
 //    }
-        FacebookType publishMessageResponse = null;
-        String imagePath = "/home/wael/Downloads/fb integration second try/restfb test/src/main/resources/Assets/website.jpg";
-        String pageId = "worldoucar";
-
-        try {
-            publishMessageResponse = facebookClient.publish(pageId + "/photos",
-                    FacebookType.class,
-                    BinaryAttachment.with("website.jpg", new FileInputStream(imagePath))
-                    ,Parameter.with("message", "sechudel"),
-                    Parameter.with("published", false),
-                    Parameter.with("scheduled_publish_time", 1709569531),
-                    Parameter.with("unpublished_content_type", "SCHEDULED")
-            );
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        long seconds = 1709568811;
-        LocalDateTime dateTime = LocalDateTime.ofEpochSecond(seconds, 0, ZoneOffset.UTC);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE,MMMM d,yyyy h:mm,a", Locale.ENGLISH);
-        String formattedDate = dateTime.format(formatter);
-        System.out.println(formattedDate);
+//        FacebookType publishMessageResponse = null;
+//        String imagePath = "/home/wael/Downloads/fb integration second try/restfb test/src/main/resources/Assets/website.jpg";
+//        String pageId = "136720779840416";
+//
+//        try {
+//            publishMessageResponse = facebookClient.publish(pageId + "/photos",
+//                    FacebookType.class,
+//                    BinaryAttachment.with("website.jpg", new FileInputStream(imagePath))
+//
+//            );
+//        } catch (FileNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//
+//        long seconds = 1709568811;
+//        LocalDateTime dateTime = LocalDateTime.ofEpochSecond(seconds, 0, ZoneOffset.UTC);
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE,MMMM d,yyyy h:mm,a", Locale.ENGLISH);
+//        String formattedDate = dateTime.format(formatter);
+//        System.out.println(formattedDate);
     }
 }
